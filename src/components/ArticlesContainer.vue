@@ -8,6 +8,11 @@
       className="p-10 bg-gray-300 flex-1"
       draggable="false"
       v-for="article in articlesData"
+      @dragstart="dragStart($event, article)"
+      @dragenter="dragEnter"
+      @dragover="dragOver"
+      @sragleave="dragLeave"
+      @ondrop="drop"
     >
       <Article
         :name="article.name"
@@ -26,6 +31,13 @@ export default {
   props: {
     title: String,
     articlesData: Array,
+  },
+  methods: {
+    dragStart(e, item) {
+      // https://learnvue.co/tutorials/vue-drag-and-drop
+      console.log('start', e.target.id, item.name);
+      e.dataTransfer.setData('text', item.name);
+    },
   },
 };
 </script>
