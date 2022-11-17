@@ -53,6 +53,18 @@ export default {
       // https://learnvue.co/tutorials/vue-drag-and-drop
       e.dataTransfer.setData('text', item.name);
     },
+    dragEnter(e) {
+      e.preventDefault();
+    },
+    dragOver() {},
+    dragLeave(e) {
+      e.preventDefault();
+    },
+    dragEnd() {},
+    drop(e) {
+      e.preventDefault();
+      const nameOfDragged = e.dataTransfer.getData('text');
+    },
   },
 };
 </script>
