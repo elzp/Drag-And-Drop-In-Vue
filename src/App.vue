@@ -4,10 +4,12 @@
       <ArticlesContainer
         :title="title[0]"
         :articlesData="articlesData.filter((it) => it.container === title[0])"
+        @moveArticle="chandleMoveArticle"
       />
       <ArticlesContainer
         :title="title[1]"
         :articlesData="articlesData.filter((it) => it.container === title[1])"
+        @moveArticle="chandleMoveArticle"
       />
     </div>
   </div>
@@ -51,6 +53,9 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    chandleMoveArticle(){}
   },
 };
 </script>
