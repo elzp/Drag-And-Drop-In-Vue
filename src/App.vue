@@ -55,7 +55,19 @@ export default {
     };
   },
   methods: {
-    chandleMoveArticle(){}
+    chandleMoveArticle(articleData) {
+      this.articlesData = this.articlesData.filter((it) => {
+        if (articleData.name === it.name) {
+          it.container =
+            it.container === articleData.container
+              ? it.container
+              : it.container === 'Drafts'
+              ? 'Published'
+              : 'Drafts';
+        }
+        return it;
+      });
+    },
   },
 };
 </script>
