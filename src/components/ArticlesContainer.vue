@@ -64,6 +64,10 @@ export default {
     drop(e) {
       e.preventDefault();
       const nameOfDragged = e.dataTransfer.getData('text');
+      this.$emit('moveArticle', {
+        name: nameOfDragged,
+        container: this.title,
+      });
     },
   },
 };
