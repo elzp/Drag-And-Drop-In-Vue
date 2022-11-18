@@ -5,11 +5,13 @@
         :title="title[0]"
         :articlesData="articlesData.filter((it) => it.container === title[0])"
         @moveArticle="chandleMoveArticle"
+        @position="updatePosition"
       />
       <ArticlesContainer
         :title="title[1]"
         :articlesData="articlesData.filter((it) => it.container === title[1])"
         @moveArticle="chandleMoveArticle"
+        @position="updatePosition"
       />
     </div>
   </div>
@@ -64,6 +66,14 @@ export default {
               : it.container === 'Drafts'
               ? 'Published'
               : 'Drafts';
+        }
+        return it;
+      });
+    },
+    updatePosition(data) {
+      this.articlesData = this.articlesData.map((it) => {
+        if (data.name === it.name) {
+          it.position = data.pos;
         }
         return it;
       });

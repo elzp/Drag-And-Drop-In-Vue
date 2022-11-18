@@ -28,6 +28,7 @@
         :name="article.name"
         :date="article.date"
         :content="article.content"
+        ref="articles"
       />
     </main>
   </div>
@@ -46,6 +47,14 @@ export default {
     return {
       dragover: false,
     };
+  },
+  mounted() {
+    this.$refs.articles.forEach((it) =>
+      this.$emit('position', {
+        name: it.name,
+        pos: it.$el.getBoundingClientRect().top,
+      })
+    );
   },
   methods: {
     dragStart(e, item) {
