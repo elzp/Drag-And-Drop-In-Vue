@@ -13,16 +13,15 @@
   >
     <h2 class="text-4xl p-5 text-center" draggable="false">{{ title }}</h2>
     <main
-      class="p-10 bg-gray-300 flex-1"
-      :class="{ 'drag-over': dragover }"
-      draggable="false"
-      v-for="article in articlesData"
+      class="p-2 bg-gray-300 flex-1 min-h-max"
       @dragstart="dragStart($event, article)"
       @dragenter.prevent="dragEnter($event)"
       @dragover.prevent="dragOver"
       @dragleave="dragLeave($event)"
       @drop="drop($event)"
       @dragend="dragEnd"
+      :class="{ 'drag-over': dragover }"
+      v-for="article in articlesData"
     >
       <Article
         :name="article.name"
@@ -76,6 +75,7 @@ export default {
       this.$emit('moveArticle', {
         name: nameOfDragged,
         container: this.title,
+        mousePosition: e.clientY,
       });
     },
   },
