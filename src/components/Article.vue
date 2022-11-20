@@ -1,5 +1,5 @@
 <template>
-  <article class="bg-white rounded-md overflow-hidden my-10" draggable="true">
+  <article class="bg-white rounded-md overflow-hidden my-1" draggable="true">
     <a href="#" draggable="false">
       <img
         alt="Placeholder"
@@ -10,9 +10,9 @@
     </a>
     <header class="pt-5 px-5 flex justify-between" draggable="false">
       <h1 class="text-lg" draggable="false">
-        <a href="#" draggable="false"> {{name}} </a>
+        <a href="#" draggable="false"> {{ name }} </a>
       </h1>
-      <div draggable="false">{{date}}</div>
+      <div draggable="false">{{ date }}</div>
     </header>
     <footer class="px-5 py-3 flex items-center text-sm" draggable="false">
       <img
@@ -21,7 +21,7 @@
         src="https://www.datocms-assets.com/12596/1561887961-1560597249-przeprogramowanilogo.png?auto=format&fm=jpg"
         draggable="false"
       />
-      <p class="ml-2 text-sm" draggable="false">{{content}}</p>
+      <p class="ml-2 text-sm" draggable="false">{{ content }}</p>
     </footer>
   </article>
 </template>

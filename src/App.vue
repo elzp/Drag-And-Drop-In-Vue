@@ -3,13 +3,21 @@
     <div className="flex justify-center items-top">
       <ArticlesContainer
         :title="title[0]"
-        :articlesData="articlesData.filter((it) => it.container === title[0])"
+        :articlesData="
+          articlesData
+            .filter((it) => it.container === title[0])
+            .sort((a, b) => a.position - b.position)
+        "
         @moveArticle="chandleMoveArticle"
         @position="updatePosition"
       />
       <ArticlesContainer
         :title="title[1]"
-        :articlesData="articlesData.filter((it) => it.container === title[1])"
+        :articlesData="
+          articlesData
+            .filter((it) => it.container === title[1])
+            .sort((a, b) => a.position - b.position)
+        "
         @moveArticle="chandleMoveArticle"
         @position="updatePosition"
       />
@@ -70,6 +78,7 @@ export default {
               : it.container === 'Drafts'
               ? 'Published'
               : 'Drafts';
+          it.position = articleData.mousePosition;
         }
         return it;
       });
