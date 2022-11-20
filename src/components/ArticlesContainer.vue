@@ -12,6 +12,7 @@
     draggable="false"
   >
     <h2 class="text-4xl p-5 text-center" draggable="false">{{ title }}</h2>
+    <!--     -->
     <main
       class="p-2 bg-gray-300 flex-1 min-h-max"
       @dragstart="dragStart($event, article)"
@@ -21,16 +22,18 @@
       @drop="drop($event)"
       @dragend="dragEnd"
       :class="{ 'drag-over': dragover }"
-      v-for="article in articlesData"
+     
     >
       <Article
+        v-for="article in articlesData" 
+        :id="article.name"
+        :key="article.name"
         :name="article.name"
         :date="article.date"
         :content="article.content"
         ref="articles"
       />
     </main>
-  </div>
 </template>
 
 <script>
@@ -59,7 +62,8 @@ export default {
     dragStart(e, item) {
       //  e.preventDefault();
       // https://learnvue.co/tutorials/vue-drag-and-drop
-      e.dataTransfer.setData('text', item.name);
+      // get it from https://forum.vuejs.org/t/how-to-get-id-of-dragged-element/13002
+      e.dataTransfer.setData('text', e.target.id);
     },
     dragEnter(e) {
       e.preventDefault();
